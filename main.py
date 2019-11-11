@@ -1,19 +1,6 @@
-import numpy as np
-import pandas as pd
 import torch
 from torch import nn
-import torch.nn.functional as F
 from torch.optim import lr_scheduler
-import torchvision
-import torchvision.transforms as transforms
-import os
-import time
-from skimage import io
-import matplotlib.pyplot as plt
-from PIL import Image
-from sklearn.model_selection import train_test_split
-import time
-import copy
 from model import DogsBreedClassifier
 from train import train_network
 from dataloader import get_loader

@@ -1,11 +1,6 @@
 import torch
 import torchvision
 from torchvision import transforms
-import os
-import matplotlib.pyplot as plt
-import numpy as np
-from sklearn.model_selection import train_test_split
-from shutil import copyfile
 
 def get_loader(path, mode, batch_size, num_workers, crop_size=224):
     if mode == 'train':

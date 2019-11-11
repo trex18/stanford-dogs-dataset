@@ -3,7 +3,6 @@ import time
 import copy
 from tqdm import tqdm
 
-
 def train_network(model, n_epochs, optimizer, criterion, scheduler,
                   device, loaders):
     """
