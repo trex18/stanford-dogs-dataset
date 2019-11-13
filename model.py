@@ -1,5 +1,22 @@
 import torch.nn as nn
 import torch.nn.functional as F
+from torchvision import models
+
+def get_imagenet_model(model_name, n_classes,
+                         feature_extractor=False, pretrained=True):
+    """Returns one of the ImageNet models. Only supports the feedforward models
+       with input 224x224 and one output (not like inception)
+    """
+    model = getattr(models, model_name)(pretrained=pretrained)
+
+    if feature_extractor:
+        for param in model.parameters():
+            param.requires_grad = False
+
+    in_features = model.fc.in_features
+    model.fc = nn.Linear(in_features, n_classes)
+
+    return model
 
 class DogsBreedClassifier(nn.Module):
 
@@ -48,4 +65,3 @@ class BasicConv(nn.Module):
         x = self.conv(x)
         x = self.bn(x)
         return F.relu(x, inplace=True)
-
