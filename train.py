@@ -71,5 +71,5 @@ def train_network(model, n_epochs, optimizer, criterion, scheduler,
     elapsed_time = time.time() - start_time
     print('Model trained in {:.0f}m {:.0f}s'.format(elapsed_time // 60, elapsed_time % 60))
     print('Best accuracy: {:.4f}'.format(best_acc))
-    model = model.load_state_dict(best_model_wts)
+    model.load_state_dict(best_model_wts)
     return model, acc_history, loss_history
